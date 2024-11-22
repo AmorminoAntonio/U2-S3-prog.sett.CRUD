@@ -18,7 +18,6 @@ const handleSubmit = (e) => {
   };
 
 
-
   fetch(URL, {
     method,
 
@@ -73,6 +72,13 @@ const handleDelete = () => {
       .catch((err) => console.log(err));
   }
 };
+const handleReset = () => {
+  const resetConfirmed = confirm("sicuro di voler resettare tutti i campi?");
+  const form = document.querySelector("form")
+if (resetConfirmed) {
+  form.reset()
+}
+};
 
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -84,11 +90,15 @@ window.addEventListener("DOMContentLoaded", function () {
     const submitBtn = document.getElementById("submitBtn");
     const deleteBtn = document.getElementById("deleteBtn");
     const subTitle = document.getElementById("subTitle");
+    const resetBtn = document.getElementById("resetBtn");
 
     if (id) {
         subTitle.innerText = "- Modifica risorsa";
-        submitBtn.className = "btn btn-success";
+        submitBtn.className = "btn text-bg-primary";
         submitBtn.innerText = "Modifica";
+
+        resetBtn.classList.remove("d-none")
+        resetBtn.onclick = handleReset;
 
         deleteBtn.classList.remove("d-none");
         deleteBtn.onclick = handleDelete;
@@ -118,7 +128,7 @@ window.addEventListener("DOMContentLoaded", function () {
     } else {
 
         subTitle.innerText = "- Crea Prodotto";
-        submitBtn.className = "btn btn-primary"
+        submitBtn.className = "btn text-bg-primary"
     }
 
 })

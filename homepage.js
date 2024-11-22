@@ -23,19 +23,17 @@ const getProducts = () => {
 
         const row = document.getElementById("rowCard");
         const col = document.createElement("div");
-        col.className = ("col");
-
+        col.className = "col border border-1 my-4";
 
             col.innerHTML = `
-            <img src="${product.imageUrl}" id="imageUrl" alt="${product.description}"/>
-            <div class="card-body">
+            <div class= "container">
+            <img src="${product.imageUrl}" class="img-fluid mt-3 " id="imageUrl" alt="${product.description}"/>
               <h5 id="name" class="card-title">${product.name}</h5>
-              <p id="description" class="card-text">${product.description}</p>
               <p id="brand" class="card-text">${product.brand}</p>
               <p id="price" class="card-text">${product.price}€</p>
-              <a id="btnModifica" href="./back-office.html?prodId=${product._id}" class="btn btn-primary">Modifica</a>
-              <a id="btnMoreInfo" href="./details.html?prodId=${product._id}" class="btn btn-primary">More Info</a>
-            </div> `;
+               <a id="btnModifica" href="./back-office.html?prodId=${product._id}" class="btn btn-primary mb-3">Modifica</a>
+              <a id="btnMoreInfo" href="./details.html?prodId=${product._id}" class="btn btn-secondary mb-3">More Info</a>
+              </div> `;
     
             row.appendChild(col)
         });
